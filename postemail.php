@@ -24,7 +24,7 @@ endif;
 
 function schedule_daily_post_summary() {
     if ( ! wp_next_scheduled( 'send_daily_post_summary' ) ) {
-        wp_schedule_event( time(), 'daily', 'send_daily_post_summary' );
+        wp_schedule_event( time(), 'every_minute', 'send_daily_post_summary' );
     }
 }
 
@@ -75,7 +75,7 @@ function send_daily_post_summary_callback() {
         $message .= "\n";
     }
     $headers = array(
-        'From: nikhil.mhaske@wisdmlabs.com',
+        'From: kushankur.das@wisdmlabs.com',
         'Content-Type: text/html; charset=UTF-8'
     );
 
@@ -85,8 +85,8 @@ function send_daily_post_summary_callback() {
 //Google Page Speed
 function get_google_page_speed_score($url) {
     // Replace YOUR_API_KEY with your actual API key
-    $api_key = '416ca0ef-63e4-4caa-a047-ead672ecc874';
-    $api_url = `https://www.webpagetest.org/runtest.php?url=$url&k=$api_key`;
+    $api_key = 'AIzaSyDCch41N6SCXaPa84G0CMsMw7uidyPrp2Y';
+    $api_url = "https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed?url=".$url."&key=".$api_key;
     $response = wp_remote_get($api_url);
     $response_body = wp_remote_retrieve_body($response);
     $json_data = json_decode($response_body,true);
