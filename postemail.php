@@ -14,7 +14,7 @@ if( ! function_exists( 'md_add_cron_schedules' ) ) :
     
     $schedules['every_minute'] = array(
     'interval' => 60,
-    'display' => __( 'Every Minute', 'maildesk' ),
+    'display' => __( 'Every Minute', 'post-email' ),
     );
     return $schedules;
     }
